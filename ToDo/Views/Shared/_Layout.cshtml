@@ -7,19 +7,28 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/ToDo.styles.css" asp-append-version="true" />
+    <style>
+        body {
+            padding-top: 0px;
+        }
+
+        h1 {
+            margin: 15px 0;
+        }
+    </style>
 </head>
 <body>
-    
+
+    <header class="bg-purple text-gold text-center py-3">
+        <h1>📚 TaskMaster 📝</h1>
+    </header>
     <div class="container">
-        <header class="bg-primary text-white text-center">
-            <h1 class="m-3 p-3">TaskMaster</h1>
-        </header>
         <main>
             @RenderBody()
         </main>
     </div>
 
-    
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

@@ -1,53 +1,51 @@
 ﻿@model IEnumerable<ToDo>
 
-    <div class="row">
-        <div class="col-md-2">
-            <form asp-action="Filter" method="post">
-                <div class="mb-3">
-                    <lable class="form-label">Category</lable>
-                    <select name="filter" class="form-selest" 
-                    asp-items="@(new SelectList(ViewBag.Categories, "CategoryId", "Name", ViewBag.Filters.CategoryId))">  
-                    <option value="all">All</option>
-                </select>
-                </div>
-            
-
+<div class="row">
+    <div class="col-md-2">
+        <form asp-action="Filter" method="post">
             <div class="mb-3">
-                <label class="form-label">Due</label>
-                <select name="filter" class="form-selest" 
-                    asp-items="@(new SelectList(ViewBag.DueFilters, "Key", "Value", ViewBag.Filters.Due))">
+                <label class="form-label" style="color: #6A0DAD;">Category</label>
+                <select name="filter" class="form-select" style="background-color: #F0E6FF;"
+                        asp-items="@(new SelectList(ViewBag.Categories, "CategoryId", "Name", ViewBag.Filters.CategoryId))">
                     <option value="all">All</option>
                 </select>
             </div>
 
             <div class="mb-3">
-                <label class="form-label">Status:</label>
-                <select name="filter" class="form-selest"
+                <label class="form-label" style="color: #6A0DAD;">Due</label>
+                <select name="filter" class="form-select" style="background-color: #F0E6FF;"
+                        asp-items="@(new SelectList(ViewBag.DueFilters, "Key", "Value", ViewBag.Filters.Due))">
+                    <option value="all">All</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label" style="color: #6A0DAD;">Status:</label>
+                <select name="filter" class="form-select" style="background-color: #F0E6FF;"
                         asp-items="@(new SelectList(ViewBag.Statuses, "StatusId", "Name", ViewBag.Filters.StatusId))">
                     <option value="all">All</option>
                 </select>
             </div>
 
-            <button type="submit" class="btn btn-primary">Filters</button>
-            <a asp-action="Index" asp-route-id="" class="btn btn-primary">Clear</a>
+            <button type="submit" class="btn btn-primary" style="background-color: #6A0DAD;">Filters</button>
+            <a asp-action="Index" asp-route-id="" class="btn btn-primary" style="background-color: #6A0DAD;">Clear</a>
+        </form>
+    </div>
 
-            </form>
-        </div>
-
-        <div class="col-md-10">
-            <form asp-action="MarkComplete" method="post" asp-route-id="@ViewBag.Filters.FilterString">
-                <table class="table-borderd table-striped mt-2">
-                    <thead>
-                        <tr>
-                            <th>Description</th>
-                            <th>Category</th>
-                            <th>Due Date</th>
-                            <th>Status</th>
-                            <th class="w-25"></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    @foreach(ToDo task in Model)
+    <div class="col-md-10">
+        <form asp-action="MarkComplete" method="post" asp-route-id="@ViewBag.Filters.FilterString">
+            <table class="table table-striped mt-2" style="background-color: #F0E6FF;">
+                <thead>
+                    <tr>
+                        <th style="color: #6A0DAD;">Description</th>
+                        <th style="color: #6A0DAD;">Category</th>
+                        <th style="color: #6A0DAD;">Due Date</th>
+                        <th style="color: #6A0DAD;">Status</th>
+                        <th class="w-25" style="color: #6A0DAD;"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (ToDo task in Model)
                     {
                         string overdue = task.Overdue ? "bg-warning" : "";
                         <tr>
@@ -56,25 +54,19 @@
                             <td class="@overdue">@task.DueDate?.ToShortDateString()</td>
                             <td class="@overdue">@task.Status.Name</td>
                             <td>
-                                @if(task.StatusId == "open")
+                                @if (task.StatusId == "open")
                                 {
-                                    <button type="submit" class="btn btn-primary btn-sm" name="@nameof(ToDo.Id)" value="@task.Id">
-                                        MarkCompleated
-                                    </button>
+                                    <button type="submit" class="btn btn-primary btn-sm" name="@nameof(ToDo.Id)" value="@task.Id" style="background-color: #6A0DAD;">MarkCompleted</button>
                                 }
                             </td>
                         </tr>
                     }
                 </tbody>
-                </table>
-            </form>
-
-            <form asp-action="DeleteComplete" method="post" asp-route-id="@ViewBag.Filters.FilterString">
-                <a asp-action="Add" class="btn btn-primary">Add new task</a>
-            <button type="submit" class="btn btn-primary">Delete compleated task</button>
-            </form>
-
-        </div>
-
+            </table>
+        </form>
+        <form asp-action="DeleteComplete" method="post" asp-route-id="@ViewBag.Filters.FilterString">
+            <a asp-action="Add" class="btn btn-primary" style="background-color: #6A0DAD;">Add new task</a>
+            <button type="submit" class="btn btn-primary" style="background-color: #00CED1;">Delete completed tasks</button>
+        </form>
     </div>
-
+</div>

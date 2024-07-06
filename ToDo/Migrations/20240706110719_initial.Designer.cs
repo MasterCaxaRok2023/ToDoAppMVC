@@ -12,7 +12,7 @@ using ToDoDemo.Models;
 namespace ToDoDemo.Migrations
 {
     [DbContext(typeof(ToDoContext))]
-    [Migration("20240703081325_initial")]
+    [Migration("20240706110719_initial")]
     partial class initial
     {
         /// <inheritdoc />

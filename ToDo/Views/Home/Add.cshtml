@@ -1,33 +1,32 @@
 ﻿@model ToDo
-<h2>New Task</h2>
+<h2>Add a new task</h2>
 
 <div asp-validation-summary="All" class="text-danger"></div>
 
 <form asp-action="Add" method="post">
     <div class="mb-3">
-        <label asp-for="Description" class="form-label">Description</label>
-        <input asp-for="Description" class="form-control" />
+        <label asp-for="Description" class="form-label" style="color: #6A0DAD;">Description</label>
+        <input asp-for="Description" class="form-control" style="background-color: #F0E6FF;" />
     </div>
 
     <div class="mb-3">
-        <label asp-for="CategoryId" class="form-label">Category</label>
-        <select asp-for="CategoryId" class="form-select" asp-items="@(new SelectList(ViewBag.Categories, "CategoryId", "Name"))">
-            <option value=""></option>
+        <label asp-for="CategoryId" class="form-label" style="color: #6A0DAD;">Category</label>
+        <select asp-for="CategoryId" class="form-select" style="background-color: #F0E6FF;" asp-items="@(new SelectList(ViewBag.Categories, "CategoryId", "Name"))">
+            <option value="">Select a category</option>
         </select>
     </div>
 
     <div class="mb-3">
-        <label asp-for="DueDate" class="form-label">Due Date: </label>
-        <input asp-for="DueDate" class="form-control" type="text" />
+        <label asp-for="DueDate" class="form-label" style="color: #6A0DAD;">Due Date: </label>
+        <input asp-for="DueDate" class="form-control" style="background-color: #F0E6FF;" type="date" />
     </div>
 
     <div class="mb-3">
-        <label asp-for="StatusId" class="form-label">Status: </label>
-        <select asp-for="StatusId" class="form-select" asp-items="@(new SelectList(ViewBag.Statuses, "StatusId", "Name"))">
+        <label asp-for="StatusId" class="form-label" style="color: #6A0DAD;">Status: </label>
+        <select asp-for="StatusId" class="form-select" style="background-color: #F0E6FF;" asp-items="@(new SelectList(ViewBag.Statuses, "StatusId", "Name"))">
         </select>
     </div>
 
-    <button type="submit" class="btn btn-primary">Add</button>
-    <a asp-action="Index" class="btn btn-primary">Cancel</a>
-
+    <button type="submit" class="btn btn-primary" style="background-color: #6A0DAD; border-color: #6A0DAD;">Add Task</button>
+    <a asp-action="Index" class="btn btn-secondary" style="background-color: #6A0DAD; border-color: #6A0DAD;">Cancel</a>
 </form>
